@@ -1,18 +1,25 @@
-import "@/app/global.css";
-import { Metadata } from "next";
+import { auth } from "@/auth";
+import { SessionProvider } from "next-auth/react";
+import Sidebar from "./components/layout/Sidebar";
+import Header from "./components/layout/Header";
+import "./global.css";
 
-export const metadata: Metadata = {
-  title: "Cinema Guru | Atlas School",
-};
-
-type Props = {
+export default async function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-};
+}) {
+  const session = await auth();
 
-export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <body className={`antialiased  bg-[#00003c] text-white`}>{children}</body>
+      <body className="bg-[#00003c] ">
+        <SessionProvider session={session}>
+          <Header />
+          <Sidebar />
+          <div>{children}</div>
+        </SessionProvider>
+      </body>
     </html>
   );
 }

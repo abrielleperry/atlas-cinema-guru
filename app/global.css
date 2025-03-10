@@ -1,1 +1,6 @@
-@import "tailwindcss";
+@import url("https://use.typekit.net/huv4wnq.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
