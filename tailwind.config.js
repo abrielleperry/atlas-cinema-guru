@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         navyBlue: "#00003c",
+        atlasTeal: "#54F4D0",
       },
     },
   },

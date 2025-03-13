@@ -15,9 +15,13 @@ export default async function RootLayout({
     <html lang="en">
       <body className="bg-[#00003c] ">
         <SessionProvider session={session}>
-          <Header />
-          <Sidebar />
-          <div>{children}</div>
+          <div className="flex h-screen">
+            <Sidebar />
+            <div className="flex flex-col flex-grow">
+              <Header />
+              <main className="flex-grow p-4 overflow-auto">{children}</main>
+            </div>
+          </div>
         </SessionProvider>
       </body>
     </html>

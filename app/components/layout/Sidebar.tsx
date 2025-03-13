@@ -6,23 +6,24 @@ import { FaStar } from "react-icons/fa6";
 import { GoClockFill } from "react-icons/go";
 import { useState } from "react";
 
+
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div
-      className={`bg-[#54F4D0] h-full fixed top-0 left-0 transition-all duration-300 p-4 ${
+      className={`bg-[#54F4D0] h-full transition-all duration-300 p-4 ${
         isExpanded ? "w-64" : "w-16"
       }`}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
       <div
-        className={`flex flex-col h-full font-neulis text-white ${
+        className={`flex flex-col h-full font-neulis text-white  ${
           isExpanded ? "items-start pl-4" : "items-center"
         }`}
       >
-        <div className="link py-4 w-full">
+        <div className="link py-4 w-full mt-12">
           <Link href="/" className="flex items-center space-x-2">
             <FaFolderClosed size={20} />
             {isExpanded && <span>Home</span>}
