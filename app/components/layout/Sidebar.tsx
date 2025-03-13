@@ -6,7 +6,6 @@ import { FaStar } from "react-icons/fa6";
 import { GoClockFill } from "react-icons/go";
 import { useState } from "react";
 
-
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -19,7 +18,7 @@ export default function Sidebar() {
       onMouseLeave={() => setIsExpanded(false)}
     >
       <div
-        className={`flex flex-col h-full font-neulis text-white  ${
+        className={`flex flex-col h-full font-poppins text-white  ${
           isExpanded ? "items-start pl-4" : "items-center"
         }`}
       >

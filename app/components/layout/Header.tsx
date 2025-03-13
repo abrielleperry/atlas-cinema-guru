@@ -11,19 +11,19 @@ const Header = () => {
     <header className="flex justify-between items-center px-6 py-4 bg-[#54F4D0]">
       <div className="flex items-center space-x-2">
         <FilmIcon />
-        <span className="text-xl font-neulis font-bold text-navyBlue">
+        <span className="text-xl font-poppins font-bold text-navyBlue">
           Cinema Guru
         </span>
       </div>
       <div className="flex items-center space-x-4">
         {session?.user?.email && (
-          <span className="text-sm font-neulis text-navyBlue">
+          <span className="text-sm font-poppins text-navyBlue">
             Welcome, {session.user.email}
           </span>
         )}
         <button
           onClick={() => signOut()}
-          className="flex items-center space-x-2 text-navyBlue text-sm font-neulis py-2 px-4 hover:bg-navyBlue hover:text-white rounded transition"
+          className="flex items-center space-x-2 text-navyBlue text-sm font-poppins py-2 px-4 hover:bg-navyBlue hover:text-white rounded transition"
         >
           <LogOutIcon />
           <span>Logout</span>

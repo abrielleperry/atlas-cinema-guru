@@ -14,9 +14,19 @@ type Movie = {
   watchLater?: boolean;
 };
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+type MovieCardProps = {
+  movie: Movie;
+  onUnfavorite?: (id: string) => void;
+  onUnwatchLater?: (id: string) => void;
+};
+
+export default function MovieCard({
+  movie,
+  onUnfavorite,
+  onUnwatchLater,
+}: MovieCardProps) {
   const [isFavorite, setIsFavorite] = useState(movie.favorited ?? false);
-  const [isWatchLater, setIsWatchLater] = useState(false);
+  const [isWatchLater, setIsWatchLater] = useState(movie.watchLater ?? false);
   const [hover, setHover] = useState(false);
 
   const posterMatch = posters.find(
@@ -33,14 +43,19 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         const res = await fetch(`/api/favorites/${movie.id}`, {
           method: "POST",
         });
-        if (!res.ok) throw new Error("Failed to add to users favorites");
+        if (!res.ok) throw new Error("Failed to add to favorites");
         setIsFavorite(true);
       } else {
         const res = await fetch(`/api/favorites/${movie.id}`, {
           method: "DELETE",
         });
-        if (!res.ok) throw new Error("Failed to remove from users favorites");
+        if (!res.ok) throw new Error("Failed to remove from favorites");
+
         setIsFavorite(false);
+
+        if (onUnfavorite) {
+          onUnfavorite(movie.id);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -53,14 +68,19 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         const res = await fetch(`/api/watch-later/${movie.id}`, {
           method: "POST",
         });
-        if (!res.ok) throw new Error("Failed to add to users watch later");
+        if (!res.ok) throw new Error("Failed to add movie to watch later");
         setIsWatchLater(true);
       } else {
         const res = await fetch(`/api/watch-later/${movie.id}`, {
           method: "DELETE",
         });
-        if (!res.ok) throw new Error("Failed to remove from users watch later");
+        if (!res.ok) throw new Error("Failed to remove movie from watch later");
+
         setIsWatchLater(false);
+
+        if (onUnwatchLater) {
+          onUnwatchLater(movie.id);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -94,7 +114,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       )}
       {/* title, sypnosis, released, genre */}
       <div
-        className={`font-neulis absolute bottom-0 left-0 w-full bg-navyBlue text-white p-4 transition-all duration-300 ${
+        className={`font-poppins absolute bottom-0 left-0 w-full bg-navyBlue text-white p-4 transition-all duration-300 ${
           hover ? "h-[150px] opacity-100" : "h-0 opacity-0"
         }`}
       >

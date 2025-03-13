@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        neulis: ['"neulis-sans"', "sans-serif"],
+        poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
         navyBlue: "#00003c",
