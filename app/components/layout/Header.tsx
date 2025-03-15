@@ -8,14 +8,14 @@ const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 bg-[#54F4D0]">
+    <header className="flex justify-between items-center px-6 py-4 bg-accentTeal">
       <div className="flex items-center space-x-2">
         <FilmIcon />
         <span className="text-xl font-poppins font-bold text-navyBlue">
           Cinema Guru
         </span>
       </div>
-      <div className="flex items-center space-x-4">
+      <div className="hidden md:flex items-center space-x-4">
         {session?.user?.email && (
           <span className="text-sm font-poppins text-navyBlue">
             Welcome, {session.user.email}

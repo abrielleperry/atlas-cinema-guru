@@ -4,11 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         navyBlue: "#00003c",
-        atlasTeal: "#54F4D0",
+        atlasTeal: "#1DD2AF",
+        accentBlue: "#000061",
+        accentTeal: "#54F4D0",
       },
     },
   },

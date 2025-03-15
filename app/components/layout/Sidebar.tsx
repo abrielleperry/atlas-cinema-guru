@@ -4,38 +4,37 @@ import Link from "next/link";
 import { FaFolderClosed } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa6";
 import { GoClockFill } from "react-icons/go";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ActivityFeed from "./ActivityFeed";
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div
-      className={`bg-[#54F4D0] h-full transition-all duration-300 p-4 ${
-        isExpanded ? "w-64" : "w-16"
+      className={`bg-atlasTeal h-full transition-all duration-300 p-5 ${
+        isExpanded ? "w-[375px]" : "w-16"
       }`}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
     >
       <div
         className={`flex flex-col h-full font-poppins text-white  ${
-          isExpanded ? "items-start pl-4" : "items-center"
+          isExpanded ? "items-start pl-6" : "items-center"
         }`}
       >
-        <div className="link py-4 w-full mt-12">
+        <div className="link py-4 w-full ">
           <Link href="/" className="flex items-center space-x-2">
             <FaFolderClosed size={20} />
             {isExpanded && <span>Home</span>}
           </Link>
         </div>
-
         <div className="link py-4 w-full">
           <Link href="/favorites" className="flex items-center space-x-2">
             <FaStar size={20} />
             {isExpanded && <span>Favorites</span>}
           </Link>
         </div>
-
         <div className="link py-4 w-full">
           <Link href="/watch-later" className="flex items-center space-x-2">
             <GoClockFill size={20} />
@@ -44,13 +43,8 @@ export default function Sidebar() {
         </div>
 
         {isExpanded && (
-          <div className="mt-6 w-full text-navyBlue">
-            <h3 className="font-bold mb-2">Latest Activities</h3>
-            <ul className="text-sm space-y-1">
-              <li>Activity 1</li>
-              <li>Activity 2</li>
-              <li>Activity 3</li>
-            </ul>
+          <div>
+            <ActivityFeed />
           </div>
         )}
       </div>

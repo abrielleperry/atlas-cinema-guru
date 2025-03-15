@@ -114,7 +114,7 @@ export default function MovieCard({
       )}
       {/* title, sypnosis, released, genre */}
       <div
-        className={`font-poppins absolute bottom-0 left-0 w-full bg-navyBlue text-white p-4 transition-all duration-300 ${
+        className={`font-poppins absolute bottom-0 left-0 w-full bg-accentBlue text-white p-4 transition-all duration-300 ${
           hover ? "h-[150px] opacity-100" : "h-0 opacity-0"
         }`}
       >
