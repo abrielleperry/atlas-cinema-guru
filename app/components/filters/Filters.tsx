@@ -24,11 +24,11 @@ export default function Filters({
   onGenreToggle,
 }: FiltersProps) {
   return (
-    <div className="flex flex-wrap md:flex-nowrap justify-between items-start gap-2 mb-8">
-      {/* left col */}
-      <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-1/2 lg:w-[30%]">
-        {/* search bar */}
-        <div className="flex flex-col gap-2 w-80">
+    <div className="flex flex-col sm:flex-row justify-between pt-2 gap-2 mb-8">
+      {/* Left Column */}
+      <div className="flex flex-col gap-4 w-full sm:w-1/3 ">
+        {/* Search Bar */}
+        <div className="flex flex-col gap-2 w-full">
           <label className="text-white font-poppins">Search</label>
           <input
             type="text"
@@ -39,9 +39,9 @@ export default function Filters({
           />
         </div>
 
-        {/* min and max year */}
-        <div className="flex flex-wrap md:flex-nowrap gap-8">
-          <div className="flex flex-col gap-2 ">
+        {/* Min and Max Year */}
+        <div className="flex flex-wrap gap-4 w-full">
+          <div className="flex flex-col gap-2 flex-1">
             <label className="text-white font-poppins">Min Year</label>
             <input
               type="number"
@@ -51,11 +51,11 @@ export default function Filters({
                   e.target.value ? parseInt(e.target.value) : null
                 )
               }
-              className="rounded-full border-atlasTeal border-2 bg-accentBlue text-white px-4 py-2 w-36"
+              className="rounded-full border-atlasTeal border-2 bg-accentBlue text-white px-4 py-2 w-full"
             />
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 flex-1 ">
             <label className="text-white font-poppins">Max Year</label>
             <input
               type="number"
@@ -65,21 +65,21 @@ export default function Filters({
                   e.target.value ? parseInt(e.target.value) : null
                 )
               }
-              className="rounded-full border-atlasTeal border-2 bg-accentBlue text-white px-4 py-2 w-36"
+              className="rounded-full border-atlasTeal border-2 bg-accentBlue text-white px-4 py-2 w-full"
             />
           </div>
         </div>
       </div>
 
-      {/* right col */}
-      <div className="flex flex-col gap-2 w-full sm:w-1/2 md:w-[45%]">
+      {/* Right Column */}
+      <div className="flex flex-col w-full sm:w-2/5">
         <label className="text-white font-poppins">Genres</label>
-        <div className="grid grid-cols-5 gap-2 sm:gap-3">
-          {genres.map((genre) => (
+        <div className="space-x-0.5 space-y-1 sm:space-x-2 sm:space-y-3">
+          {genres.slice(0, 10).map((genre) => (
             <button
               key={genre}
               onClick={() => onGenreToggle(genre)}
-              className={`flex items-center justify-center font-poppins text-xs sm:text-base px-2 sm:px-4 py-2 rounded-full border-2 transition duration-200 min-w-[70px] whitespace-nowrap ${
+              className={`px-1.5 py-2 font-poppins rounded-full text-xs sm:text-base sm:px-3 border-2 transition duration-200 whitespace-nowrap ${
                 selectedGenres.includes(genre)
                   ? "bg-atlasTeal text-[#00003c]"
                   : "bg-navyBlue text-white border-atlasTeal"

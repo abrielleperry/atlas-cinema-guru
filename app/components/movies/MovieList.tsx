@@ -107,7 +107,7 @@ export default function MovieList() {
   };
 
   return (
-    <div className="max-w-8xl mx-auto px-4">
+    <div className="max-w-screen-8xl mx-auto px-4">
       <Filters
         genres={[...new Set(movies.map((m) => m.genre))]}
         searchTerm={searchTerm}
@@ -120,7 +120,7 @@ export default function MovieList() {
         onGenreToggle={handleGenreToggle}
       />
 
-      <div className="grid grid-cols-1 justify-items-center md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 justify-items-center sm:grid-cols-3 gap-4">
         {paginatedMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

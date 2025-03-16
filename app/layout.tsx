@@ -15,6 +15,8 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <style>
           @import
           url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
@@ -25,16 +27,16 @@ export default async function RootLayout({
           <div className="flex flex-col h-screen">
             <Header />
 
-            <div className="block md:hidden">
+            <div className="block sm:hidden">
               <MobileSidebar />
             </div>
 
             <div className="flex flex-grow">
-              <div className="hidden md:block">
+              <div className="hidden sm:block">
                 <Sidebar />
               </div>
 
-              <main className="flex-grow p-4 overflow-auto">{children}</main>
+              <main className="flex-grow p-2 overflow-auto">{children}</main>
             </div>
           </div>
         </SessionProvider>

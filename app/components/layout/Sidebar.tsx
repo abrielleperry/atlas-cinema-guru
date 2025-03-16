@@ -20,7 +20,7 @@ export default function Sidebar() {
     >
       <div
         className={`flex flex-col h-full font-poppins text-white  ${
-          isExpanded ? "items-start pl-6" : "items-center"
+          isExpanded ? "items-start pl-1" : "items-center"
         }`}
       >
         <div className="link py-4 w-full ">

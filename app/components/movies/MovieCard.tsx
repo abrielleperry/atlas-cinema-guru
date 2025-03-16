@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import posters from "@/data/posters.json";
 import { FaRegStar, FaStar, FaRegClock, FaClock } from "react-icons/fa6";
 
 type Movie = {
@@ -12,6 +11,7 @@ type Movie = {
   genre: string;
   favorited?: boolean;
   watchLater?: boolean;
+  image?: string;
 };
 
 type MovieCardProps = {
@@ -29,13 +29,7 @@ export default function MovieCard({
   const [isWatchLater, setIsWatchLater] = useState(movie.watchLater ?? false);
   const [hover, setHover] = useState(false);
 
-  const posterMatch = posters.find(
-    (p) => p.title.toLowerCase().trim() === movie.title.toLowerCase().trim()
-  );
-
-  const posterUrl =
-    posterMatch?.posterUrl ||
-    "https://via.placeholder.com/300x450?text=No+Poster";
+  const movieImage = movie.image ? movie.image : `/image/${movie.id}.webp`;
 
   const toggleFavorite = async () => {
     try {
@@ -89,13 +83,13 @@ export default function MovieCard({
 
   return (
     <div
-      className="relative w-[400px] h-[400px] border-[2.5px] border-atlasTeal rounded-xl overflow-hidden shadow-lg"
+      className="relative w-full max-w-[400px] aspect-square border-[2.5px] border-atlasTeal rounded-xl overflow-hidden shadow-lg"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       {/* movie image */}
       <img
-        src={posterUrl || "https://via.placeholder.com/300x450?text=No+Poster"}
+        src={movieImage || "https://via.placeholder.com/300x450?text=No+Poster"}
         alt={movie.title}
         className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
       />
@@ -114,8 +108,8 @@ export default function MovieCard({
       )}
       {/* title, sypnosis, released, genre */}
       <div
-        className={`font-poppins absolute bottom-0 left-0 w-full bg-accentBlue text-white p-4 transition-all duration-300 ${
-          hover ? "h-[150px] opacity-100" : "h-0 opacity-0"
+        className={`font-poppins text-left absolute bottom-0 left-0 w-full bg-accentBlue text-white p-4 transition-all duration-300 ${
+          hover ? "max-h-[170px] opacity-100" : "h-0 opacity-0"
         }`}
       >
         <div className="flex flex-col overflow-hidden ">
@@ -123,11 +117,11 @@ export default function MovieCard({
             <p className="text-xl">{movie.title}</p>
             <p className="text-lg">({movie.released})</p>
           </div>
-          <div>
+          <div className="flex-row">
             <p className="text-sm my-2">{movie.synopsis}</p>
           </div>
-          <div className="w-1/4 p-2 bg-atlasTeal rounded-full ">
-            <p className="text-sm text-center">{movie.genre}</p>
+          <div className="flex-row max-w-28 p-2 text-center bg-atlasTeal rounded-full ">
+            <p className="">{movie.genre}</p>
           </div>
         </div>
       </div>

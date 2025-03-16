@@ -15,7 +15,7 @@ const Header = () => {
           Cinema Guru
         </span>
       </div>
-      <div className="hidden md:flex items-center space-x-4">
+      <div className="hidden sm:flex items-center space-x-4">
         {session?.user?.email && (
           <span className="text-sm font-poppins text-navyBlue">
             Welcome, {session.user.email}
