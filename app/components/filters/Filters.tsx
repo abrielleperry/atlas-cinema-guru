@@ -74,8 +74,23 @@ export default function Filters({
       {/* Right Column */}
       <div className="flex flex-col w-full sm:w-2/5">
         <label className="text-white font-poppins">Genres</label>
-        <div className="space-x-0.5 space-y-1 sm:space-x-2 sm:space-y-3">
-          {genres.slice(0, 10).map((genre) => (
+        <div className="grid grid-cols-5 gap-1 sm:gap-2">
+          {genres.slice(0, 5).map((genre) => (
+            <button
+              key={genre}
+              onClick={() => onGenreToggle(genre)}
+              className={`px-1.5 py-2 font-poppins rounded-full text-xs sm:text-base sm:px-3 border-2 transition duration-200 whitespace-nowrap ${
+                selectedGenres.includes(genre)
+                  ? "bg-atlasTeal text-[#00003c] "
+                  : "bg-navyBlue text-white border-atlasTeal"
+              }`}
+            >
+              {genre}
+            </button>
+          ))}
+        </div>
+        <div className="mt-2 space-x-0.5 sm:space-x-2">
+          {genres.slice(5).map((genre) => (
             <button
               key={genre}
               onClick={() => onGenreToggle(genre)}
