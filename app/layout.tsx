@@ -36,7 +36,7 @@ export default async function RootLayout({
                 <Sidebar />
               </div>
 
-              <main className="flex-grow p-1 overflow-auto">{children}</main>
+              <main className="flex-grow p-2 overflow-auto">{children}</main>
             </div>
           </div>
         </SessionProvider>
