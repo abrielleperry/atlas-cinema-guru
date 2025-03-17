@@ -1,9 +1,8 @@
 "use client";
 
 import { useSession, signIn } from "next-auth/react";
-import { use, useEffect } from "react";
-import MovieList from "./components/movies/MovieList";
-import MovieCard from "./components/movies/MovieCard";
+import { useEffect } from "react";
+import MovieList from "app/components/movies/MovieList";
 
 export default function Page() {
   const { data: session, status } = useSession();
