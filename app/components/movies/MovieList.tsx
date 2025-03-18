@@ -17,6 +17,7 @@ type Movie = {
   image?: string;
 };
 
+
 export default function MovieList() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [page, setPage] = useState(1);
