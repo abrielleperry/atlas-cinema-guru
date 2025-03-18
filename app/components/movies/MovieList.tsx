@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import MovieCard from "./MovieCard";
 import PaginationButtons from "./Pagination";
 import Filters from "../filters/Filters";
+import Loader from "../icons/Loader";
 
 type Movie = {
   id: string;
@@ -25,9 +26,12 @@ export default function MovieList() {
   const [maxYear, setMaxYear] = useState<number | null>(null);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        setLoading(true)
         const allMovies = [];
         let currentPage = 1;
         let keepFetching = true;
@@ -47,6 +51,8 @@ export default function MovieList() {
         setMovies(allMovies);
       } catch (error) {
         console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -105,6 +111,10 @@ export default function MovieList() {
     setSelectedGenres(updatedGenres);
     setPage(1);
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="max-w-screen-8xl mx-auto px-4">
