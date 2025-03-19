@@ -23,7 +23,7 @@ const Header = () => {
         )}
         <button
           onClick={() => signOut()}
-          className="flex items-center space-x-2 text-navyBlue text-sm font-poppins py-2 px-4 hover:bg-navyBlue hover:text-white rounded transition"
+          className="flex items-center rounded-lg space-x-2 text-navyBlue text-sm font-poppins py-2 px-4 hover:bg-navyBlue hover:text-white transition"
         >
           <LogOutIcon />
           <span>Logout</span>
