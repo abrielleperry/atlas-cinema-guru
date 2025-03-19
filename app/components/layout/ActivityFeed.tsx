@@ -35,7 +35,7 @@ export default function ActivityFeed() {
         Latest Activities
       </p>
       {activities.length === 0 ? (
-        ""
+        "No recent activities"
       ) : (
         <ul className="space-y-2">
           {activities.map((activity) => (
